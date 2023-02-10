@@ -10,7 +10,10 @@ const TimelineInput = ({ value, setValue }: Props) => {
     setValue(inputValue);
   };
   return (
-    <form>
+    <form className="flex flex-col items-center gap-2">
+      <label htmlFor="timeline" className="text-lg">
+        Guess The Time Period
+      </label>
       <input
         type="range"
         min="1823"
@@ -18,7 +21,10 @@ const TimelineInput = ({ value, setValue }: Props) => {
         value={value}
         onChange={handleChange}
         step="1"
+        className="w-[40rem]"
+        id="timeline"
       />
+      <p className="text-center">{value}</p>
     </form>
   );
 };

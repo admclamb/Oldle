@@ -14,8 +14,12 @@ const Home = (props: Props) => {
         <ImageWrapper>
           <Image url={image} description="old photo" />
         </ImageWrapper>
-        <TimelineInput value={inputTime} setValue={setInputTime} />
-        <p>{inputTime}</p>
+        <div className="flex justify-center p-2">
+          <p className="py-1 px-2 bg-slate-600 rounded">1</p>
+        </div>
+        <div className="py-2">
+          <TimelineInput value={inputTime} setValue={setInputTime} />
+        </div>
       </div>
     </Layout>
   );
