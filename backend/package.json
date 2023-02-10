@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/src/index.js",
+    "start": "concurrently npm:start:*",
+    "test": "npx cross-env LOG_LEVEL=warn jest --runInBand --detectOpenHandles --forceExit",
+    "test:0": "npm run test -- us-00",
+    "test:drop-database": "node test/drop-database",
+    "test:start": "npx cross-env LOG_LEVEL=warn NODE_ENV=test npm run test:start:run",
+    "test:start:run": "run-s test:drop-database start "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "knex": "^2.1.0",
+    "multer": "^1.4.5-lts.1",
+    "nanoid": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "pg": "^8.7.3",
+    "pino-http": "^8.0.1",
+    "pino-pretty": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/node": "^18.11.19",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  }
+}
