@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from '../../components/Image/Image';
 import ImageWrapper from '../../components/ImageWrapper/ImageWrapper';
 import Layout from '../../Layout/Layout';
@@ -8,6 +8,8 @@ type Props = {};
 
 const Home = (props: Props) => {
   const [inputTime, setInputTime] = useState<string>('1923');
+  const [pictures, setPictures] = useState<any>({});
+  useEffect(() => {}, []);
   return (
     <Layout mainClass="bg-slate-900 text-white">
       <div className="container mx-auto pt-4 ">
