@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import * as path from 'path';
 import { ErrorHandler } from './errors/Error';
+import { DayRotuer } from './routes/DayRoute';
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 export class App {
@@ -12,7 +13,7 @@ export class App {
   }
 
   private setRoutes() {
-    // this.instance.use('/users', userRouter);
+    this.instance.use('/day', DayRotuer.routes);
   }
 
   public config() {
