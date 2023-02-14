@@ -5,7 +5,7 @@ type Props = {};
 
 const DayForm = (props: Props) => {
   const [currDay, setCurrDay] = useState<string>('2018-07-22');
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const handleChange = ({ target: { value } }) => {
     setCurrDay(value);
   };
@@ -21,10 +21,13 @@ const DayForm = (props: Props) => {
           max="2023-12-31"
           value={currDay}
           onChange={handleChange}
-          className="bg-slate-900 border rounded border-slate-50/[0.06] p-2"
+          className="bg-slate-900 border rounded border-slate-50/[0.06] p-2 brightness-90 hover:cursor-pointer"
         />
       </div>
-      <PictureUpload />
+      <PictureUpload
+        selectedImages={selectedImages}
+        setSelectedImages={setSelectedImages}
+      />
     </form>
   );
 };
