@@ -1,4 +1,4 @@
-export class PropertyValidator {
+export class DataValidator {
   public static hasValidProperties(
     validProperties: string[],
     data: {}

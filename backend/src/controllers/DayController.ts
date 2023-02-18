@@ -1,6 +1,6 @@
 import { NextFunction, query, Request, Response } from 'express';
 import { Day } from '../models/DayModel';
-import { PropertyValidator } from '../utils/PropertyValidator';
+import { DataValidator } from '../utils/DataValidator';
 export class DayController {
   private static validProperties = ['date', 'pictures'];
 
@@ -17,8 +17,8 @@ export class DayController {
   public static async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { data } = req.body;
-      PropertyValidator.hasValidProperties(this.validProperties, data);
-      PropertyValidator.hasRequiredProperties(this.validProperties, data);
+      DataValidator.hasValidProperties(this.validProperties, data);
+      DataValidator.hasRequiredProperties(this.validProperties, data);
       const createdDay = await Day.create(data);
       res.status(200).json({ data: createdDay });
     } catch (error) {
