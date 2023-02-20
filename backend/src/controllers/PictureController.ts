@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { DatabaseErrorHandler } from '../errors/DatabaseErrorHandler';
 import { Picture } from '../models/PictureModel';
+import { ImageUploader } from '../upload/ImageUploader';
 import { DataValidator } from '../utils/DataValidator';
 
 export class PictureController {
@@ -31,6 +32,9 @@ export class PictureController {
 
   public static async create(req: Request, res: Response, next: NextFunction) {
     try {
+      const { file } = req;
+      const imageUploader = new ImageUploader()
+      
     } catch (error) {
       console.log(error);
       return next(DatabaseErrorHandler.handleError(error));
