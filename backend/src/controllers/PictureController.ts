@@ -33,8 +33,7 @@ export class PictureController {
   public static async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { file } = req;
-      const imageUploader = new ImageUploader()
-      
+      const imageUploader = new ImageUploader(file);
     } catch (error) {
       console.log(error);
       return next(DatabaseErrorHandler.handleError(error));

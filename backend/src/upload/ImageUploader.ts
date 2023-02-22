@@ -1,11 +1,16 @@
 import fs from 'fs';
+import S3 from 'aws-sdk/clients/s3';
+const bucketName = process.env.AWS_BUCKET_NAME_DEVELOPMENT;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY_DEVELOPMENT;
+const secretAccessKey = process.env.AWS_SECRET_KEY_DEVELOPMENT;
 
 export class ImageUploader {
   private s3;
   private bucketName: string;
 
-  public constructor(config, bucketName: string) {
-    this.s3 = new S3(config);
+  public constructor(bucketName: string) {
+    this.s3 = new S3({ region, accessKeyId, secretAccessKey });
     this.bucketName = bucketName;
   }
 
