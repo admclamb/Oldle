@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { DayApi } from '../../api/DayApi';
 
 type Props = {};
 
@@ -8,6 +9,13 @@ const ListDays = (props: Props) => {
   useEffect(() => {
     (async () => {
       const controller = new AbortController();
+      try {
+        const response = await DayApi.getInstance().listDays();
+        setDays(response);
+      } catch (error) {
+        console.log(error);
+      }
+      return () => controller.abort();
     })();
   }, []);
 

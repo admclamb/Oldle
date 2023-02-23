@@ -38,7 +38,7 @@ const PictureUpload = ({ selectedImages, setSelectedImages }: Props) => {
         id="image-uploader"
         type="file"
         accept="image/jpeg, image/png, image/jpg"
-        className="bg-slate-900 border rounded border-slate-50/[0.06] p-2"
+        className="bg-slate-900 border rounded border-slate-50/[0.06] p-2 brightness-90"
         onChange={handleChange}
       />
       <div className="grid grid-cols-3 gap-3">

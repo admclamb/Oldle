@@ -7,7 +7,11 @@ export class Api {
     this.headers = headers;
   }
 
-  public async fetchJson<T>(path: URL, options: {}, onCancel: T): Promise<T> {
+  public async fetchJson<T>(
+    path: string,
+    options: {},
+    onCancel: T
+  ): Promise<T> {
     try {
       const response = await fetch(this.baseUrl + path, options);
       if (response.status === 204) {

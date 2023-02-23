@@ -22,11 +22,12 @@ export class DayApi extends Api {
   }
 
   public listDays(): Promise<[]> {
-    const path = new URL('days');
+    const path = '/days';
     return this.fetchJson<[]>(path, {}, []);
   }
 
-  public readDay(day: Date) Promise<any> {
-    const path = new URL('days');
+  public readDay(day: Date): Promise<any> {
+    const path = `/days/${day}`;
+    return this.fetchJson<{}>(path, {}, {});
   }
 }
