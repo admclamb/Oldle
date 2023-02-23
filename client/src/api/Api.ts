@@ -2,7 +2,7 @@ export class Api {
   private baseUrl: string;
   private headers: Headers;
 
-  public constructor(baseUrl: string, headers: Headers) {
+  protected constructor(baseUrl: string, headers: Headers) {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
