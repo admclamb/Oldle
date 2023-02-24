@@ -4,6 +4,7 @@ import { Api } from './Api';
 export class DayApi extends Api {
   private static instance: DayApi;
   private static basePath: string = '/days';
+
   private constructor() {
     const baseUrl = process.env.BACKEND_BASE_URL || '';
     if (!baseUrl) {

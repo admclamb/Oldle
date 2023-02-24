@@ -3,6 +3,7 @@ import { Picture } from '../ts/types/Picutre';
 export class PictureApi extends Api {
   private static instance: PictureApi;
   private static basePath: string = '/pictures';
+
   private constructor() {
     const baseUrl = process.env.BACKEND_BASE_URL || '';
     if (!baseUrl) {
