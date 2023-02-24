@@ -21,16 +21,24 @@ export class PictureApi extends Api {
     return PictureApi.instance;
   }
 
-  public listPictures(): Promise<[]> {
+  public list(): Promise<[]> {
     return this.fetchJson<[]>(PictureApi.basePath, {}, []);
   }
 
-  public readPicture(_id: string): Promise<{}> {
+  public read(_id: string): Promise<{}> {
     const path = `${PictureApi.basePath}/${_id}`;
     return this.fetchJson(path, {}, {});
   }
 
-  public updatePicture(picture: Picture): Promise<Picture | {}> {
+  public create(picture: {}): Promise<Picture | {}> {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({ date: picture }),
+    };
+    return this.fetchJson<{}>(PictureApi.basePath, options, {});
+  }
+
+  public update(picture: Picture): Promise<Picture | {}> {
     const options = {
       method: 'PUT',
       body: JSON.stringify({ date: picture }),
@@ -38,7 +46,7 @@ export class PictureApi extends Api {
     return this.fetchJson<{}>(PictureApi.basePath, options, {});
   }
 
-  public deletePicture(_id: string): void {
+  public delete(_id: string): void {
     const path = `${PictureApi.basePath}/${_id}`;
     const options = {
       method: 'DELETE',

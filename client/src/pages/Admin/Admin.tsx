@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import CreateDay from '../../components/CreateDay/CreateDay';
+import CreatePicture from '../../components/CreatePicture/CreatePicture';
 import ListDays from '../../components/ListDays/ListDays';
 import ErrorAlert from '../../Error/ErrorAlert';
 import Layout from '../../Layout/Layout';
-import { Error } from '../../ts/types/Error';
 
 type Props = {};
 
 const Admin = (props: Props) => {
-  const [error, setError] = useState<Error>({ message: 'ERROR' });
+  const [error, setError] = useState<any>({ message: 'ERROR' });
+
   return (
     <Layout mainClass="bg-slate-900 text-white">
       <ErrorAlert error={error} setError={setError} />
@@ -17,6 +18,7 @@ const Admin = (props: Props) => {
         <div className="custom-grid gap-5">
           <CreateDay />
           <ListDays />
+          <CreatePicture setError={setError} />
         </div>
       </div>
     </Layout>
