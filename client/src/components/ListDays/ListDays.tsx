@@ -22,6 +22,16 @@ const ListDays = (props: Props) => {
   return (
     <div className="border rounded border-slate-50/[0.06] p-3">
       <h3 className="text-xl">List Of Days</h3>
+      <ul>
+        {days.map((day) => {
+          return (
+            <li key={day._id}>
+              <img src={day.image_url} alt="Day Image" />
+              <p>Date: {day.date}</p>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

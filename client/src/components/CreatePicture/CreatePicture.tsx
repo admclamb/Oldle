@@ -30,7 +30,9 @@ const CreatePicture = ({ setError }: Props) => {
   const uploadPicutre = async () => {
     try {
       (async () => {
-        const response = await PictureApi.create({ file, date });
+        console.log(file);
+        const response = await PictureApi.getInstance().create({ file, date });
+        console.log(response);
       })();
     } catch (error) {
       setError(error.message);
@@ -87,7 +89,10 @@ const CreatePicture = ({ setError }: Props) => {
         />
       </div>
       <div>
-        <button className="border rounded border-slate-50/[0.06] p-2">
+        <button
+          className="border rounded border-slate-50/[0.06] p-2"
+          onClick={uploadPicutre}
+        >
           Upload Image
         </button>
       </div>
