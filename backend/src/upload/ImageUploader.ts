@@ -10,6 +10,9 @@ export class ImageUploader {
   private bucketName: string;
 
   public constructor(bucketName: string) {
+    if (!accessKeyId || !region || secretAccessKey) {
+      throw new Error('AWS enviroment variables not provided.');
+    }
     this.s3 = new S3({ region, accessKeyId, secretAccessKey });
     this.bucketName = bucketName;
   }
