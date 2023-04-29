@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { PictureApi } from '../../api/PictureApi';
-import ImageModal from '../Modal/ImageModal/ImageModal';
+import React, { useEffect, useState } from "react";
+import { PictureApi } from "../../api/PictureApi";
+import ImageModal from "../Modal/ImageModal/ImageModal";
 type Props = {
   setError: (arg0: any) => void;
 };
@@ -9,13 +9,22 @@ const CreatePicture = ({ setError }: Props) => {
   const [file, setFile] = useState<File | null>(null);
   const [date, setDate] = useState<Date>(new Date());
   const [openedImage, setOpenedImage] = useState<File | null>();
-
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string>("");
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
 
   const handleDateChange = ({ target: { value } }) => {
     setDate(new Date(value));
+  };
+
+  const handleImageUrlChange = ({ target: { value } }) => {
+    setImageUrl(value);
+  };
+
+  const submitSelectedImageUrl = (event) => {
+    setSelectedImageUrl(imageUrl);
   };
 
   const deleteImage = () => {
@@ -79,6 +88,29 @@ const CreatePicture = ({ setError }: Props) => {
           </>
         )}
       </div>
+      <h3>OR</h3>
+      <div className="flex flex-col  gap-2">
+        {selectedImageUrl && (
+          <ImageModal image={selectedImageUrl} setImage={setSelectedImageUrl} />
+        )}
+        <label htmlFor="image-url">Image URL</label>
+        <input
+          id="image-url"
+          type="text"
+          value={imageUrl}
+          onChange={handleImageUrlChange}
+          className="bg-slate-900 border rounded border-slate-50/[0.06] p-2 brightness-90"
+        />
+        <div>
+          <button
+            className="border rounded border-slate-50/[0.06] p-2"
+            onClick={setSelectedImageUrl}
+          >
+            Set Selected Url
+          </button>
+        </div>
+      </div>
+      <hr />
       <div className="flex flex-col gap-2">
         <label htmlFor="image-uploader">Image Date</label>
         <input

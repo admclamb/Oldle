@@ -1,17 +1,17 @@
-import { Day } from '../ts/types/Day';
-import { Api } from './Api';
+import { Day } from "../ts/types/Day";
+import { Api } from "./Api";
 
 export class DayApi extends Api {
   private static instance: DayApi;
-  private static basePath: string = '/days';
+  private static basePath: string = "/days";
 
   private constructor() {
-    const baseUrl = process.env.BACKEND_BASE_URL || '';
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
     if (!baseUrl) {
-      throw new Error('No base url has been provided.');
+      throw new Error("No base url has been provided.");
     }
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
     super(baseUrl, headers);
   }
 
@@ -38,7 +38,7 @@ export class DayApi extends Api {
 
   public createDay(day: Day): Promise<Day | {}> {
     const options = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ date: day }),
     };
     return this.fetchJson<{}>(DayApi.basePath, options, {});
@@ -46,7 +46,7 @@ export class DayApi extends Api {
 
   public updateDay(day: Day): Promise<Day | {}> {
     const options = {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify({ date: day }),
     };
     return this.fetchJson<{}>(DayApi.basePath, options, {});
@@ -55,7 +55,7 @@ export class DayApi extends Api {
   public deleteDay(_id: string): void {
     const path = `${DayApi.basePath}/${_id}`;
     const options = {
-      method: 'DELETE',
+      method: "DELETE",
     };
     this.fetchJson<void | null>(path, options, null);
   }

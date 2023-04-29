@@ -1,13 +1,12 @@
-import { NextFunction, Request, Response } from 'express';
-import { DatabaseErrorHandler } from '../errors/DatabaseErrorHandler';
-import { Picture } from '../models/PictureModel';
-import { ImageUploader } from '../upload/ImageUploader';
-import { DataValidator } from '../utils/DataValidator';
+import { NextFunction, Request, Response } from "express";
+import { DatabaseErrorHandler } from "../errors/DatabaseErrorHandler";
+import { Picture } from "../models/PictureModel";
+import { DataValidator } from "../utils/DataValidator";
 
 export class PictureController {
-  private static validProperties = ['url', 'date', '_id'];
+  private static validProperties = ["url", "date", "_id"];
 
-  private static requiredProperties = ['url', 'date'];
+  private static requiredProperties = ["url", "date"];
 
   public static async list(req: Request, res: Response, next: NextFunction) {
     try {
@@ -23,17 +22,7 @@ export class PictureController {
       if (foundPicture) {
         res.status(200).json({ data: foundPicture });
       }
-      return next({ status: 404, message: 'Picture not found.' });
-    } catch (error) {
-      console.log(error);
-      return next(DatabaseErrorHandler.handleError(error));
-    }
-  }
-
-  public static async create(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { file } = req;
-      const imageUploader = new ImageUploader(file);
+      return next({ status: 404, message: "Picture not found." });
     } catch (error) {
       console.log(error);
       return next(DatabaseErrorHandler.handleError(error));
@@ -52,11 +41,11 @@ export class PictureController {
       if (!_id) {
         return next({
           status: 400,
-          message: 'A picture id is required.',
+          message: "A picture id is required.",
         });
       }
       const filter = { _id };
-      const updatedPicture = await User.findOneAndUpdate(filter, data, {
+      const updatedPicture = await Picture.findOneAndUpdate(filter, data, {
         new: true,
       });
       if (updatedPicture) {
@@ -78,7 +67,7 @@ export class PictureController {
       }
       return next({
         status: 400,
-        message: 'Picture id not found.',
+        message: "Picture id not found.",
       });
     } catch (error) {
       console.log(error);

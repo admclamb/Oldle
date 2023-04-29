@@ -1,17 +1,17 @@
-import { Api } from './Api';
-import { Picture } from '../ts/types/Picutre';
+import { Api } from "./Api";
+import { Picture } from "../ts/types/Picutre";
 
 export class PictureApi extends Api {
   private static instance: PictureApi;
-  private static basePath: string = '/pictures';
+  private static basePath: string = "/pictures";
 
   private constructor() {
-    const baseUrl = import.meta.env.BACKEND_BASE_URL;
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
     if (!baseUrl) {
-      throw new Error('No base url has been provided.');
+      throw new Error("No base url has been provided.");
     }
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
     super(baseUrl, headers);
   }
 
@@ -33,7 +33,7 @@ export class PictureApi extends Api {
 
   public create(picture: {}): Promise<Picture | {}> {
     const options = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ date: picture }),
     };
     return this.fetchJson<{}>(PictureApi.basePath, options, {});
@@ -41,7 +41,7 @@ export class PictureApi extends Api {
 
   public update(picture: Picture): Promise<Picture | {}> {
     const options = {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify({ date: picture }),
     };
     return this.fetchJson<{}>(PictureApi.basePath, options, {});
@@ -50,7 +50,7 @@ export class PictureApi extends Api {
   public delete(_id: string): void {
     const path = `${PictureApi.basePath}/${_id}`;
     const options = {
-      method: 'DELETE',
+      method: "DELETE",
     };
     this.fetchJson<void | null>(path, options, null);
   }

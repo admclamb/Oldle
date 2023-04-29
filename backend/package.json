@@ -6,7 +6,7 @@
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon build/src/index.js",
-    "start": "concurrently npm:start:*",
+    "dev": "concurrently npm:start:*",
     "test": "npx cross-env LOG_LEVEL=warn jest --runInBand --detectOpenHandles --forceExit",
     "test:0": "npm run test -- us-00",
     "test:drop-database": "node test/drop-database",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.17",
-    "@types/node": "^18.11.19",
+    "@types/node": "^18.15.3",
     "nodemon": "^2.0.16",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
