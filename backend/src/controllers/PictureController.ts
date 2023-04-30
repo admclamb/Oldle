@@ -10,7 +10,21 @@ export class PictureController {
 
   public static async list(req: Request, res: Response, next: NextFunction) {
     try {
-      res.status(200).json({ data: await Picture.find() });
+      console.log("LISTING");
+      if (!req.query.page || !req.query.limit) {
+        return next({
+          status: 400,
+          message: "a page and or limit is required",
+        });
+      }
+      const limit: number = parseInt(req.query.limit as string);
+      const page: number = parseInt(req.query.page as string);
+      const pictures = await Picture.find()
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .sort({ createdAt: -1 });
+      console.log("pictures: ", pictures);
+      res.status(200).json({ data: pictures });
     } catch (error) {
       return next(DatabaseErrorHandler.handleError(error));
     }

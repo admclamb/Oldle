@@ -22,7 +22,7 @@ export class DayApi extends Api {
     return DayApi.instance;
   }
 
-  public listDays(): Promise<[]> {
+  public listDays(): Promise<Day[]> {
     return this.fetchJson<[]>(DayApi.basePath, {}, []);
   }
 

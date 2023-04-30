@@ -1,24 +1,36 @@
-import { timeStamp } from 'console';
-import mongoose from 'mongoose';
+import { timeStamp } from "console";
+import mongoose from "mongoose";
 
 const DaySchema = new mongoose.Schema(
   {
     date: {
       type: Date,
-      required: [true, 'A Day must have a date'],
-      unique: [true, 'A Day must have a unique date'],
+      required: [true, "A Day must have a date"],
+      unique: [true, "A Day must have a unique date"],
     },
-    images: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Picture',
-        },
-      ],
-      required: [true, 'A Day must have a set of pictures'],
-      unique: [true, 'A Day must have a unique set of pictures'],
+    picture: {
+      title: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
+      hint: {
+        type: String,
+        required: true,
+      },
+      alternateImage: {
+        type: String,
+        required: false,
+      },
     },
-    is_editable: {
+    isEditable: {
       type: Boolean,
       default: false,
     },
@@ -28,4 +40,4 @@ const DaySchema = new mongoose.Schema(
   }
 );
 
-export const Day = mongoose.model('Day', DaySchema);
+export const Day = mongoose.model("Day", DaySchema);

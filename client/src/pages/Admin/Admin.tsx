@@ -9,7 +9,7 @@ import ListPictures from "../../components/ListPictures/ListPictures";
 type Props = {};
 
 const Admin = (props: Props) => {
-  const [error, setError] = useState<any>({ message: "ERROR" });
+  const [error, setError] = useState<any>({});
 
   return (
     <Layout mainClass="bg-slate-900 text-white">
@@ -18,15 +18,15 @@ const Admin = (props: Props) => {
         <h2 className="text-2xl">Admin Panel</h2>
         <div className="custom-grid gap-5">
           <div>
-            <CreateDay />
-            <ListDays />
+            {/* <CreateDay /> */}
+            {/* <ListDays /> */}
           </div>
 
           <div>
             <ListPictures />
           </div>
 
-          <CreatePicture setError={setError} />
+          {/* <CreatePicture setError={setError} /> */}
         </div>
       </div>
     </Layout>

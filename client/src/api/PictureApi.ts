@@ -22,8 +22,12 @@ export class PictureApi extends Api {
     return PictureApi.instance;
   }
 
-  public list(): Promise<[]> {
-    return this.fetchJson<[]>(PictureApi.basePath, {}, []);
+  public list(page: string): Promise<Picture[]> {
+    return this.fetchJson<[]>(
+      `${PictureApi.basePath}?page=${page}&limit=20`,
+      {},
+      []
+    );
   }
 
   public read(_id: string): Promise<{}> {

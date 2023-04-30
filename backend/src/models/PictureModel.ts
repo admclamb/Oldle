@@ -1,14 +1,25 @@
 import mongoose from "mongoose";
 
 const PictureSchema = new mongoose.Schema({
-  url: {
+  title: {
     type: String,
-    required: [true, "A Picture must have an image url"],
-    unique: [true, "A Picutre url must be unique"],
+    required: true,
   },
-  year: {
-    type: Number,
-    required: [true, "A Picture must have a year"],
+  image: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  hint: {
+    type: String,
+    required: true,
+  },
+  alternateImage: {
+    type: String,
+    required: false,
   },
 });
 

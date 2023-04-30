@@ -1,7 +1,8 @@
 export type Picture = {
-  title: String;
-  image: String;
+  _id: string;
+  title: string;
+  image: string;
   date: Date;
-  hint: String;
-  aleternateImage: String;
+  hint: string;
+  alternateImage?: string;
 };

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { DayApi } from '../../api/DayApi';
-
+import React, { useEffect, useState } from "react";
+import { DayApi } from "../../api/DayApi";
+import { Day } from "../../ts/types/Day";
 type Props = {};
 
 const ListDays = (props: Props) => {
-  const [days, setDays] = useState<any>([]);
+  const [days, setDays] = useState<Day[]>([]);
 
   useEffect(() => {
     (async () => {

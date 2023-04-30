@@ -1,22 +1,17 @@
-import * as express from 'express';
-import { ErrorHandler } from '../errors/Error';
-import { PictureController } from '../controllers/PictureController';
-export class PictureRouter {
-  private static router = express.Router();
-  public static routes() {
-    express
-      .Router()
-      .route('/')
-      .get(PictureController.list)
-      .post(PictureController.create)
-      .all(ErrorHandler.methodNotAllowed);
+import * as express from "express";
+import { ErrorHandler } from "../errors/Error";
+import { PictureController } from "../controllers/PictureController";
 
-    express
-      .Router()
-      .route('/:picture_id')
-      .get(PictureController.read)
-      .put(PictureController.update)
-      .delete(PictureController.destroy)
-      .all(ErrorHandler.methodNotAllowed);
-  }
-}
+const router = express.Router();
+
+router
+  .route("/")
+  .get(PictureController.list)
+  .all(ErrorHandler.methodNotAllowed);
+
+router
+  .route("/:picture_id")
+  .get(PictureController.read)
+  .all(ErrorHandler.methodNotAllowed);
+
+export const pictureRouter = router;
