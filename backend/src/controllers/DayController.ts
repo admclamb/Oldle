@@ -4,6 +4,18 @@ import { DataValidator } from "../utils/DataValidator";
 export class DayController {
   private static validProperties = ["date", "pictures"];
 
+  public static async list(req: Request, res: Response, next: NextFunction) {
+    try {
+      const days = await Day.find();
+      res.status(200).json({ data: days });
+    } catch (error: any) {
+      return next({
+        status: 500,
+        message: "Error getting days.",
+      });
+    }
+  }
+
   public static async read(req: Request, res: Response, next: NextFunction) {
     const { date: queryDate } = req.params;
     if (queryDate) {

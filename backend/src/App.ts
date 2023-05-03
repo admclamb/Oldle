@@ -13,7 +13,7 @@ export class App {
   }
 
   private setRoutes() {
-    this.instance.use("/day", dayRouter);
+    this.instance.use("/days", dayRouter);
     this.instance.use("/pictures", pictureRouter);
   }
 

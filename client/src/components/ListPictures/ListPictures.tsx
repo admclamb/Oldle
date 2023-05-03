@@ -24,19 +24,10 @@ const ListPictures = (props: Props) => {
       }
     })();
   }, []);
-  const togglePictureExtension = ({
-    target,
-  }: React.MouseEvent<HTMLButtonElement>) => {
-    const index = target.getAttribute("data-index");
-    const foundIndex = isOpenArray.indexOf(index);
-    if (foundIndex > -1) {
-    } else {
-      setIsOpenArray((curr) => [...curr, parseInt(index)]);
-    }
-  };
+
   return pictures.length > 0 ? (
     <div className="border rounded border-slate-50/[0.06] p-3">
-      <h3 className="text-xl">List of Pictures</h3>
+      <h3 className="text-xl font-bold">List of Pictures</h3>
       <ul>
         {pictures.map((picture, index) => {
           const { title, image, date, hint, alternateImage, _id } = picture;
@@ -50,45 +41,36 @@ const ListPictures = (props: Props) => {
               <div>
                 <img src={image} alt="Oldle Image of the day" />
               </div>
-              <h4 className="text-lg font-bold">{title}</h4>
+              <h4 className="text-lg font-semibold">{title}</h4>
               <div className="flex justify-between">
                 <p>
                   <span className="font-semibold">Date:</span>{" "}
                   {day.format("DD-MM-YYYY")}
                 </p>
-                <button
-                  className={`duration-200 ease-out ${
-                    isOpenArray.some((arrayIndex) => arrayIndex === index) &&
-                    "rotate-90"
-                  }`}
-                  data-index={index}
-                  onClick={togglePictureExtension}
-                >
-                  <FontAwesomeIcon icon={faChevronRight} size="lg" />
-                </button>
               </div>
-              {isOpenArray.some((arrayIndex) => arrayIndex === index) && (
-                <ul>
-                  <li>
-                    <p>
-                      <span className="font-semibold">Hint: </span>
-                      {hint}
-                    </p>
-                  </li>
-                  <li>
-                    <p>Alternate Image</p>
-                    <div>
-                      <img src={alternateImage} alt="No alternate image" />
-                    </div>
-                  </li>
-                  <li>
-                    <p>
-                      <span className="font-semibold">Id: </span>
-                      {_id}
-                    </p>
-                  </li>
-                </ul>
-              )}
+              <ul>
+                <li>
+                  <p>
+                    <span className="font-semibold">Hint: </span>
+                    {hint}
+                  </p>
+                </li>
+                <li>
+                  <p className="font-semibold">Alternate Image: </p>
+                  <div>
+                    <img src={alternateImage} alt="No alternate image" />
+                  </div>
+                </li>
+                <li>
+                  <p>
+                    <span className="font-semibold">Id: </span>
+                    {_id}
+                  </p>
+                </li>
+              </ul>
+              <button className="px-3 py-2 border rounded border-slate-50/[0.06] mt-3">
+                Select Image
+              </button>
             </li>
           );
         })}
