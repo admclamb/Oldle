@@ -1,34 +1,22 @@
 import React, { useState } from "react";
-import CreateDay from "../../components/CreateDay/CreateDay";
-import CreatePicture from "../../components/CreatePicture/CreatePicture";
-import ListDays from "../../components/ListDays/ListDays";
-import ErrorAlert from "../../Error/ErrorAlert";
 import Layout from "../../Layout/Layout";
-import ListPictures from "../../components/ListPictures/ListPictures";
-import { Day } from "../../ts/types/Day";
-
+import ErrorAlert from "../../Error/ErrorAlert";
+import ListDays from "../../components/ListDays/ListDays";
+import dayjs from "dayjs";
 type Props = {};
 
 const Admin = (props: Props) => {
   const [error, setError] = useState<any>({});
-  const [currDay, setCurrDay] = useState<Day | null>(null);
   return (
     <Layout mainClass="bg-slate-900 text-white">
       <ErrorAlert error={error} setError={setError} />
-      <div className="container mx-auto pt-4">
-        <h2 className="text-2xl">Admin Panel</h2>
-        <div className="custom-grid gap-5">
-          <div className="flex flex-col gap-3">
-            <CreateDay day={currDay} setDay={setCurrDay} />
-            <ListDays setCurrDay={setCurrDay} />
-          </div>
+      <div className="container-sm mx-auto pt-4 flex flex-col gap-4">
+        <header>
+          <h2 className="text-4xl font-semibold">Admin Panel</h2>
+          <p>Todays Date, {dayjs(new Date()).format("MMM-DD-YYYY")}</p>
+        </header>
 
-          <div>
-            <ListPictures />
-          </div>
-
-          {/* <CreatePicture setError={setError} /> */}
-        </div>
+        <ListDays />
       </div>
     </Layout>
   );

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import HelpModal from '../Modal/HelpModal/HelpModal';
-import StatsModal from '../Modal/StatsModal/StatsModal';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import HelpModal from "../Modal/HelpModal/HelpModal";
+import StatsModal from "../Modal/StatsModal/StatsModal";
 type Props = {};
 
 const Navbar = (props: Props) => {
@@ -31,7 +31,10 @@ const Navbar = (props: Props) => {
           <Link to="/">
             <h1 className="text-2xl font-semibold">OLDLE</h1>
           </Link>
-          <ul className="flex gap-2">
+          <ul className="flex gap-2 items-center">
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
             <li>
               <button className="p-2">
                 <i className="fa-regular fa-brightness fa-lg"></i>

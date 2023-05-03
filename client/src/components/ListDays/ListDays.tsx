@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { DayApi } from "../../api/DayApi";
 import { Day } from "../../ts/types/Day";
 import dayjs from "dayjs";
-type Props = {
-  setCurrDay: React.Dispatch<React.SetStateAction<Day | null>>;
-};
+import EditDayModal from "../Modal/EditDayModal/EditDayModal";
+type Props = {};
 
-const ListDays = ({ setCurrDay }: Props) => {
+const ListDays = ({}: Props) => {
   const [days, setDays] = useState<Day[]>([]);
+  const [selectedDay, setSelectedDay] = useState<Day | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -28,28 +28,30 @@ const ListDays = ({ setCurrDay }: Props) => {
       {days.length > 0 ? (
         <ul>
           {days.map((day) => {
-            const { picture = null, date } = day;
+            const { picture = null, date, isEditable } = day;
             const formattedDate = dayjs(date);
             return (
               <li
                 key={day._id}
                 className="flex flex-col gap-3 border-b border-slate-50/[0.06] py-3"
               >
+                <p className="text-xl">
+                  <span className="font-semibold">Date: </span>
+                  {formattedDate.format("MMM-DD-YYYY")}
+                </p>
                 {picture && (
                   <div>
                     <img src={picture.image} alt="Olde image of the day" />
                   </div>
                 )}
-                <p>
-                  <span className="font-semibold">Date: </span>
-                  {formattedDate.format("DD-MM-YYYY")}
-                </p>
+
                 <div>
                   <button
-                    className="px-3 py-2 border rounded border-slate-50/[0.06]"
-                    onClick={() => setCurrDay(day)}
+                    className="px-3 py-2 border rounded border-slate-50/[0.06] disabled:cursor-not-allowed w-28"
+                    disabled={!isEditable}
+                    onClick={() => setSelectedDay(day)}
                   >
-                    Select Day
+                    {isEditable ? "Edit Day" : "Can't Edit"}
                   </button>
                 </div>
               </li>
@@ -59,6 +61,7 @@ const ListDays = ({ setCurrDay }: Props) => {
       ) : (
         <p>No Days have been created</p>
       )}
+      <EditDayModal day={selectedDay} setDay={setSelectedDay} />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 type Props = {
   isModalOpen: boolean;
-  setIsModalOpen: (arg0: boolean) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   header: string;
   children: React.ReactNode;
 };

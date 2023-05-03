@@ -43,3 +43,11 @@ video {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.container-sm {
+  max-width: 640px;
+}
+
+.container-md {
+  max-width: 768px;
+}
