@@ -4,7 +4,6 @@ import * as path from "path";
 import { ErrorHandler } from "./errors/Error";
 import { pictureRouter } from "./routes/PictureRoute";
 
-require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const dayRouter = require("./routes/DayRoute");
 export class App {
   instance: Application;
