@@ -6,12 +6,14 @@
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon build/src/index.js",
+    "build": "tsc --build",
     "dev": "concurrently npm:start:*",
     "test": "npx cross-env LOG_LEVEL=warn jest --runInBand --detectOpenHandles --forceExit",
     "test:0": "npm run test -- us-00",
     "test:drop-database": "node test/drop-database",
     "test:start": "npx cross-env LOG_LEVEL=warn NODE_ENV=test npm run test:start:run",
-    "test:start:run": "run-s test:drop-database start "
+    "test:start:run": "run-s test:drop-database start",
+    "seed:pictures": "node build/src/db/seeds/PictureDataProvider.js --import development pictures"
   },
   "author": "",
   "license": "ISC",
