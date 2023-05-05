@@ -61,7 +61,9 @@ const ListDays = ({}: Props) => {
       ) : (
         <p>No Days have been created</p>
       )}
-      <EditDayModal day={selectedDay} setDay={setSelectedDay} />
+      {selectedDay && (
+        <EditDayModal day={selectedDay} setDay={setSelectedDay} />
+      )}
     </div>
   );
 };
