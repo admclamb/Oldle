@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Image = ({ url, description }: Props) => {
-  return <img src={url} alt={description} />;
+  return <img src={url} alt={description} className="max-w-2xl" />;
 };
 
 export default Image;

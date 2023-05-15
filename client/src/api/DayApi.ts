@@ -26,9 +26,9 @@ export class DayApi extends Api {
     return this.fetchJson<[]>(DayApi.basePath, {}, []);
   }
 
-  public readDay(day: Date): Promise<any> {
+  public readDay(day: string): Promise<any> {
     const path = `${DayApi.basePath}/${day}`;
-    return this.fetchJson<{}>(path, {}, {});
+    return this.fetchJson<null>(path, {}, null);
   }
 
   public readDayById(_id: string): Promise<any> {

@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const DaySchema = new mongoose.Schema(
   {
     date: {
-      type: Date,
+      type: String,
       required: [true, "A Day must have a date"],
       unique: [true, "A Day must have a unique date"],
     },

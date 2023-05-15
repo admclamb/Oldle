@@ -9,7 +9,7 @@ if (!ENV) {
   throw new Error("A node enviroment is required");
 }
 const app = new App();
-app.config();
+app.init();
 
 function listener() {
   console.log(`Listening on Port ${PORT}!`);

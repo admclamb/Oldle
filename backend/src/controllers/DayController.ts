@@ -17,10 +17,10 @@ export class DayController {
   }
 
   public static async read(req: Request, res: Response, next: NextFunction) {
-    const { date: queryDate } = req.params;
-    if (queryDate) {
-      const date = new Date(queryDate);
+    const { date } = req.params;
+    if (date) {
       const day = await Day.findOne({ date });
+      console.log("DAY: ", day);
       res.status(200).json({ data: day });
     }
     return next({ status: 400, message: "Invalid date provided" });

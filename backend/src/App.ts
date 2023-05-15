@@ -17,7 +17,7 @@ export class App {
     this.instance.use("/pictures", pictureRouter);
   }
 
-  public config() {
+  public init() {
     this.instance.use(cors());
     this.instance.use(express.json());
     this.setRoutes();

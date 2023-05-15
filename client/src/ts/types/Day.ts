@@ -9,7 +9,7 @@ export type Day = {
     date: Date;
     hint: string;
     alternateImage?: string;
-  } | null;
+  };
   isEditable: false;
   createdAt: Date;
   updatedAt: Date;
