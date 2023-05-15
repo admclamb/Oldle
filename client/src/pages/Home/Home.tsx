@@ -3,12 +3,20 @@ import Image from "../../components/Image/Image";
 import ImageWrapper from "../../components/ImageWrapper/ImageWrapper";
 import Layout from "../../Layout/Layout";
 import TimelineInput from "../../components/Input/TimelineInput/TimelineInput";
+import { DayApi } from "../../api/DayApi";
+import dayjs from "dayjs";
 type Props = {};
 
 const Home = (props: Props) => {
   const [inputTime, setInputTime] = useState<string>("1923");
   const [pictures, setPictures] = useState<any>({});
-  useEffect(() => {}, []);
+  const todaysDate = dayjs(new Date()).format("YYYY-MM-DD");
+  console.log(todaysDate);
+  useEffect(() => {
+    (async () => {
+      const response = await DayApi.getInstance().readDay(new Date());
+    })();
+  }, []);
   return (
     <Layout mainClass="bg-slate-900 text-white">
       <div className="container mx-auto pt-4 ">

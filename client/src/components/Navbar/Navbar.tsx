@@ -11,41 +11,33 @@ const Navbar = (props: Props) => {
   const openStatsModal = () => setIsStatsOpen(true);
   return (
     <>
-      <nav className="p-2 bg-slate-900  border-b border-slate-50/[0.06] text-white">
-        <div className="flex justify-between  items-center mx-auto">
-          <ul className="flex gap-2 items-center">
+      <nav className="p-2 bg-slate-900 border-b border-slate-50/[0.06] text-white">
+        <div className="container flex items-center mx-auto">
+          <ul className="flex gap-2 items-center basis-1/3 justify-self-start">
             <li>
               <button className="p-2" onClick={openHelpModal}>
-                <i
-                  className="fa-light fa-circle-question fa-lg"
-                  onClick={openHelpModal}
-                ></i>
+                Help
               </button>
             </li>
             <li>
               <Link to="/archive" className="p-2">
-                <i className="fa-regular fa-box-archive fa-lg"></i>
+                Archive
               </Link>
             </li>
           </ul>
-          <Link to="/">
-            <h1 className="text-2xl font-semibold">OLDLE</h1>
+          <Link to="/" className="basis-1/3 justify-self-center">
+            <h1 className="text-2xl font-semibold text-center">OLDLE</h1>
           </Link>
-          <ul className="flex gap-2 items-center">
+          <ul className="flex gap-2 items-center basis-1/3 justify-end justify-self-end">
             <li>
               <Link to="/admin">Admin</Link>
             </li>
             <li>
-              <button className="p-2">
-                <i className="fa-regular fa-brightness fa-lg"></i>
-              </button>
+              <button className="p-2">Dark</button>
             </li>
             <li>
               <button className="p-2" onClick={openHelpModal}>
-                <i
-                  className="fa-solid fa-signal-bars-good fa-lg"
-                  onClick={openHelpModal}
-                ></i>
+                Stats
               </button>
             </li>
           </ul>
