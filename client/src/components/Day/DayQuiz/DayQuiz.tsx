@@ -1,31 +1,35 @@
-import React, { useState } from "react";
-import ImageWrapper from "../ImageWrapper/ImageWrapper";
-import Image from "../Image/Image";
-import TimelineInput from "../Input/TimelineInput/TimelineInput";
-import { Day } from "../../ts/types/Day";
+import React, { useEffect, useState } from "react";
+import ImageWrapper from "../../ImageWrapper/ImageWrapper";
+import Image from "../../Image/Image";
+import TimelineInput from "../../Input/TimelineInput/TimelineInput";
+import { Day } from "../../../ts/types/Day";
 import dayjs from "dayjs";
-import { calculateGuess } from "../../utils/calculateGuess";
+import { calculateGuess } from "../../../utils/calculateGuess";
 type Props = {
   day: Day | null;
+  isOver: Boolean;
+  setIsOver: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const DayQuiz = ({ day }: Props) => {
+const DayQuiz = ({ day, isOver, setIsOver }: Props) => {
   const [inputTime, setInputTime] = useState<string>("1923");
   const [attempts, setAttempts] = useState<string[]>([]);
-  const isOver = attempts.length >= 5;
+  useEffect(() => {
+    if (attempts.length >= 5) {
+      setIsOver(true);
+    }
+  }, [attempts]);
   if (!day) {
     return null;
   }
   const { picture } = day;
   const formattedCorrectDate = dayjs(picture.date).format("YYYY");
-  console.log(isOver);
 
   const submitGuess = () => {
     if (!isOver) {
-      console.log(inputTime, formattedCorrectDate);
       setAttempts((curr) => [...curr, inputTime]);
       if (inputTime === formattedCorrectDate) {
-        console.log("CORRECT DATE");
+        setIsOver(true);
       }
     }
   };
