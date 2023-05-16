@@ -30,9 +30,6 @@ const Navbar = (props: Props) => {
           </Link>
           <ul className="flex gap-2 items-center basis-1/3 justify-end justify-self-end">
             <li>
-              <Link to="/admin">Admin</Link>
-            </li>
-            <li>
               <button className="p-2">Dark</button>
             </li>
             <li>

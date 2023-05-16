@@ -26,7 +26,7 @@ const Home = (props: Props) => {
   console.log(day);
   return (
     <Layout mainClass="bg-slate-900 text-white">
-      <div className="container mx-auto pt-4 ">
+      <div className="container mx-auto sm:pt-4 max-w-2xl flex flex-col gap-4">
         <DayQuiz day={day} />
       </div>
     </Layout>

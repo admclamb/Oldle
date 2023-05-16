@@ -1,5 +1,5 @@
-import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
+import React from "react";
+import Navbar from "../components/Navbar/Navbar";
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const Layout = ({ children, mainClass }: Props) => {
 };
 
 Layout.defaultProps = {
-  mainClass: '',
+  mainClass: "",
 };
 
 export default Layout;

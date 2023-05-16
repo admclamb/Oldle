@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type Props = {
   value: string;
@@ -21,7 +21,7 @@ const TimelineInput = ({ value, setValue }: Props) => {
         value={value}
         onChange={handleChange}
         step="1"
-        className="w-[40rem]"
+        className="w-full"
         id="timeline"
       />
       <p className="text-center">{value}</p>
