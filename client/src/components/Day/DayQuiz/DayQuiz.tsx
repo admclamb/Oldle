@@ -9,11 +9,12 @@ type Props = {
   day: Day | null;
   isOver: Boolean;
   setIsOver: React.Dispatch<React.SetStateAction<boolean>>;
+  attempts: string[];
+  setAttempts: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-const DayQuiz = ({ day, isOver, setIsOver }: Props) => {
+const DayQuiz = ({ day, isOver, setIsOver, attempts, setAttempts }: Props) => {
   const [inputTime, setInputTime] = useState<string>("1923");
-  const [attempts, setAttempts] = useState<string[]>([]);
   useEffect(() => {
     if (attempts.length >= 5) {
       setIsOver(true);
