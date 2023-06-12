@@ -1,4 +1,4 @@
-package com.oldle.application.common.classes;
+package com.oldle.application.common.classes.service;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

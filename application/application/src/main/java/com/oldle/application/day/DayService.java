@@ -1,17 +1,17 @@
 package com.oldle.application.day;
 
-import java.util.List;
+import java.util.Map;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.oldle.application.common.classes.Service;
+import com.oldle.application.common.classes.repository.PaginationRepository;
+import com.oldle.application.common.classes.service.PaginationService;
 
-public class DayService extends Service<Day> {
+public class DayService extends PaginationService<Day> {
 
-    public DayService(MongoRepository<Day, String> repository) {
+    public DayService(PaginationRepository<Day, String> repository) {
         super(repository);
     }
-    public List<Day> listDays() {
-        return this.getRepository().findAll(null, null);
+    public Map<String, Object> listDays(int page, int size) {
+        return this.findAll(page, size);
     }
 }
