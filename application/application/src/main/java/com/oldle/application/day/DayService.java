@@ -1,6 +1,17 @@
 package com.oldle.application.day;
 
-import com.oldle.application.common.Service;
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.oldle.application.common.classes.Service;
 
 public class DayService extends Service<Day> {
+
+    public DayService(MongoRepository<Day, String> repository) {
+        super(repository);
+    }
+    public List<Day> listDays() {
+        return this.getRepository().findAll(null, null);
+    }
 }
