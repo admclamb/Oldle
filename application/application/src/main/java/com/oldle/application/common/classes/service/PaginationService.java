@@ -1,27 +1,22 @@
 package com.oldle.application.common.classes.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.oldle.application.common.classes.repository.PaginationRepository;
 
+@Service
 public class PaginationService<T> {
 
+    @Autowired
     private PaginationRepository<T, String> repository;
-    private int currentPage;
-    private int totalItems;
-    private int totalPages;
-
-    public  PaginationService(PaginationRepository<T, String> repository) {
-        this.repository = repository;
-
-    }
 
     public Map<String, Object> findAll(int page, int size){
         Pageable paging = PageRequest.of(page, size);

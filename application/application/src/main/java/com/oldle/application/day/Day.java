@@ -14,9 +14,23 @@ public class Day {
     private Boolean isEditable;
 
     public Day(String year) {
-        super();
         this.date = new Date(year);
         this.isEditable = false;
     }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public Picture getPicture() {
+        return this.picture;
+    }
+
+    public Boolean getIsEditable() {
+        return this.isEditable;
+    }
 }
