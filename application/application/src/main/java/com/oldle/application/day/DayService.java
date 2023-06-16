@@ -15,18 +15,18 @@ public class DayService {
     private DayRepository repository;
 
     public DayService(DayRepository repository) {
-        
+        this.repository = repository;
     }
 
-    public Page<List<Day>> findAll(int page, int size){
+    public Page<Day> findAll(int page, int size){
         Pageable paging = PageRequest.of(page, size);
         
-        Page<List<Day>> pages = this.repository.findAllPageable(paging);
+        Page<Day> pages = this.repository.findAll(paging);
         return pages;
     }
 
     public Map<String, Object> listDays(int page, int size) {
-        Page<List<Day>> pageOfDays = this.findAll(page, size);
+        Page<Day> pageOfDays = this.findAll(page, size);
         Map<String, Object> response = new HashMap<>();
         response.put("items", pageOfDays.getContent());
         response.put("currentPage", pageOfDays.getNumber());
